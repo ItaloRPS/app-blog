@@ -1,7 +1,10 @@
 'use client'
-import s from 'styled-components'
+import s,{css} from 'styled-components'
 const Teste = s.h1`
-color:red;
+${({ theme}) => css`
+    color: ${ theme.colors.mediumGray}
+
+  `}
 `
 export default function Home() {
   return (

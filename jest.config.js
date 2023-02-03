@@ -16,7 +16,9 @@ module.exports = {
     testEnvironment: 'jsdom',
     testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
     testPathIgnorePatterns: ['/node_modules/', '/.next/', '/.out/', '/public/'],
-  
+    transform: {
+      '\\.[jt]sx?$': 'esbuild-jest',
+    },
     setupFilesAfterEnv: ['<rootDir>/.jest/setup-tests.js'],
   };
   
