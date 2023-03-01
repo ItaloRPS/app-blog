@@ -1,4 +1,4 @@
-import * as Styled from './style';
+import * as Styled from './styles';
 
 export type HeadingProps = {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export const Heading = ({
   children,
   colorDark = true,
   as = 'h1',
-  size =  "small",
+  size = 'huge',
   uppercase = false,
 }: HeadingProps) => {
   return (
