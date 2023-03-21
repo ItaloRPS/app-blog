@@ -5,17 +5,23 @@ import * as S from './style'
 
 export type ArticleMetaProps = {
     createdAt:string;
-    author:Author
-    categories:Category[]
+    author?:Author
+    categories?:Category[]
 }
-export const ArticleMeta = ({createdAt,author,categories}:ArticleMetaProps)=>{
+export const ArticleMeta = ({createdAt,author=undefined,categories = []}:ArticleMetaProps)=>{
     return(
         <S.Wrappaer>
             <p>
+                {typeof author !== 'undefined' &&(
+                <>
                 <span> Por </span>
                 <a href={`/author/${author.slug}`}>{author.displayName}</a>
                 <span className="separator"> Em </span>
+                </>
+                )}
                 <time dateTime={createdAt}>{formatDate(createdAt)}</time>
+                {categories.length > 0  &&(
+                <>
                 <span className="separator">|</span>
                 <span className="catgories">
                     {categories.map(category=>{
@@ -27,6 +33,8 @@ export const ArticleMeta = ({createdAt,author,categories}:ArticleMetaProps)=>{
                         }       
                     )}
                 </span>
+                </>
+                )}
             </p>
         </S.Wrappaer>
     )
