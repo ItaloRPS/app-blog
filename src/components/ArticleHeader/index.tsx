@@ -2,12 +2,13 @@ import { ArticleMeta } from '../ArticleMeta'
 import { Heading } from '../Heading'
 import * as S from './style'
 import {ArticleMetaProps} from '../ArticleMeta/'
+import { StrapiImage } from '@/shared-types/StrapiImage '
 
 export type ArticleHeaderProp ={
     id:string
     title:string,
     excerpt:string,
-    cover:string,
+    cover:StrapiImage,
     
 }&ArticleMetaProps
 
@@ -18,7 +19,7 @@ export const ArticleHeader = ({title, excerpt,cover ,createdAt,author,categories
             {title}
             </Heading>
             <S.Excerpt>{excerpt}</S.Excerpt>
-            <S.Cover src={cover} alt={title} />
+            <S.Cover src={cover.url} alt={title} />
             <ArticleMeta 
                 createdAt={createdAt}
                  author ={author} 

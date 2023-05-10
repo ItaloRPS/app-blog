@@ -10,7 +10,7 @@ export const Container = style.a`
     
     > img{
        width: 15rem;
-       height: 18rem;
+       height: 15rem;
        border-radius: 50%;
     }
 

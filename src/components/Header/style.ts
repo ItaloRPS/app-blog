@@ -17,6 +17,14 @@ ${({theme})=>css`
     ${HeaderTitle}{
         margin: 0 0 cal(${theme.spacings.small} - 1rem);
     }
+
+    @media ${theme.media.lteSmall} {
+      display: flex;
+      flex-flow: column wrap;
+      & > ${HeaderTitle}{
+        margin: 0 0 {theme.spacings.medium} 0;
+      }
+    }
 `}
 `
 export const Content = styled.div`
@@ -25,4 +33,7 @@ ${({ theme }) => css`
   flex-flow: column wrap;
   margin-left: ${theme.spacings.large};
   max-width: 48rem;
+  @media ${theme.media.lteSmall} {
+    margin-left: 0;
+  }
 `}`

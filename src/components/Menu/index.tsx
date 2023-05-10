@@ -3,7 +3,7 @@ import {Close as CloseIcon} from '@styled-icons/material-outlined/Close'
 import { type } from 'os';
 import React, { useState } from 'react';
 import { LogoLink } from '../LogoLink';
-import { MenuLink } from '../MenuLink';
+import { MenuLink} from '../MenuLink';
 import * as S from './style'
 
 export type MenuPropsLinks = {

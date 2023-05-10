@@ -1,13 +1,14 @@
 'use client'
-import s,{css} from 'styled-components'
-const Teste = s.h1`
-${({ theme}) => css`
-    color: ${ theme.colors.mediumGray}
-
-  `}
-`
+import React from 'react'
+import { loadPosts } from '../api/load-posts'
+import { useEffect } from 'react'
 export default function Home() {
+useEffect(()=>{
+  loadPosts()
+      .then((r)=> console.log(r))
+},[])
+
   return (
-    <Teste>teste</Teste>
+    <h1 className='teste'>teste</h1>
   )
 }

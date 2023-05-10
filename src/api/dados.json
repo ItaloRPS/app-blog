@@ -19,12 +19,23 @@
                 }
               ]
             },
-            "menuLink": {
+            "menuLink": [{
               "id": "1",
-              "link": "teste",
-              "text": "teste",
+              "link": "/home",
+              "text": "Home",
               "newTab": false
             },
+            {
+              "id": "1",
+              "link": "/article",
+              "text": "Artigos",
+              "newTab": false
+            },{
+              "id": "1",
+              "link": "/author",
+              "text": "Autor",
+              "newTab": false
+            }],
             "footer": "texto para Footer"
           }
         }

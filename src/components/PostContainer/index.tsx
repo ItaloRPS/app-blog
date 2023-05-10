@@ -22,7 +22,7 @@ export const PostContainer = styled.div<PostContainerProps>`
     ${postContainerStyle[size](theme)}
 
     @media ${theme.media.lteMedium}{
-        padding: 0 calc(${theme.spacings.large}/2);
+        /* padding: 0 calc(${theme.spacings.large}/2); */
     }
 `}
 `

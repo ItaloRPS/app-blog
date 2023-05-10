@@ -6,6 +6,7 @@ max-width: 120rem;
 display: grid;
 grid-template-columns: repeat(auto-fill, 28rem);
 gap:28px;
+justify-content: center;
 `
 export const NotFound = styled.div`
 ${({theme})=>css`
