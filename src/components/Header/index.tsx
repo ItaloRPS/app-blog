@@ -1,3 +1,4 @@
+import React from 'react'
 import { Heading } from '../Heading';
 import { LogoLink } from '../LogoLink';
 import * as Styled from './style';
@@ -14,7 +15,7 @@ export const Header = ({blogName, blogDescription, logo, showText=true}:HeaderPr
     
     return(
             <Styled.Wrapper>
-                <LogoLink 
+                <LogoLink
                     text={`${blogName} - ${blogDescription}`}
                     link='/'
                     srcImg={logo}

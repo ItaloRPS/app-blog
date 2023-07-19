@@ -1,3 +1,4 @@
+import React from "react";
 import { PostTag } from '@/shared-types/tags'
 import Link from 'next/link'
 import * as S from './style'

@@ -1,4 +1,4 @@
-import { Post } from "../Post"
+import React from 'react'
 import { PostCard, PostCardProps } from "../PostCard"
 import *  as S from './style'
 

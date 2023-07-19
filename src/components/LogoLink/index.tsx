@@ -1,3 +1,4 @@
+import React from 'react'
 import * as Styled from './style';
 import { Heading } from '../Heading';
 import Link from 'next/link';
@@ -8,25 +9,25 @@ export type LogoLinkProps = {
   link: string;
   newTab?: boolean;
 };
-
 export const LogoLink = ({
   text,
   srcImg = '',
   link,
   newTab = false,
 }: LogoLinkProps) => {
+
   const nextLink = link.match(/^\//) ? true : false;
   const target = newTab ? '_blank' : '_self';
 
-  if (nextLink) {
+  if (!nextLink) {
     return (
       <Heading size="small" uppercase>
-        <Link href={link} passHref>
+         <Link href={link} passHref>
           <Styled.Container target={target}>
             {!!srcImg && <img src={srcImg} alt={text} />}
             {!srcImg && text}
           </Styled.Container>
-        </Link>
+         </Link>
       </Heading>
     );
   }
@@ -37,6 +38,6 @@ export const LogoLink = ({
         {!!srcImg && <img src={srcImg} alt={text} />}
         {!srcImg && text}
       </Styled.Container>
-    </Heading>
+     </Heading>
   );
 };

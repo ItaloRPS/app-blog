@@ -7,11 +7,11 @@ type MenuBehavionProps = {
 }
 
 const wrapperChanger = (menuVisible:MenuBehavionProps['menuVisible'],theme:MenuBehavionProps['theme'])=>css`
-    left: ${menuVisible?0:'-31rem'};
+    left: ${menuVisible?0:'-25rem'};
     overflow-y: ${menuVisible?'auto':'hidden'};
 
     @media ${theme.media.lteMedium} {
-        left: ${menuVisible?0:'-33rem'};
+        left: ${menuVisible?0:'-26rem'};
         
     }
 `
@@ -34,7 +34,7 @@ display: flex;
 position: fixed;
 z-index: 1;
 width: 100%;
-max-width: 32rem;
+max-width: 26rem;
 height: 100vh;
 top: 0;
 left: 0;
@@ -46,9 +46,7 @@ ${wrapperChanger(menuVisible,theme)}
 
 export const Nav = styled.nav`
 ${({theme})=>css`
-margin: auto;
 width: 100%;
-
 
 `}
 `

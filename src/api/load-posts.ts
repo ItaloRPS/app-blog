@@ -5,32 +5,32 @@ import config from '../config'
 import { Settings } from 'http2'
 
 export type  LoadPostsVariables = {
-    categorySlug?: String
-    postSlug?: String
-    postSearch?: String
-    authorSlug?: String
-    tagSlug?: String
+    categorySlug?: Object
+    postSlug?: Object
+    postSearch?: Object
+    authorSlug?: Object
+    tagSlug?: Object
     sort?: String 
     start?: number
     limit?: number
 }
 
 export type StrapPostAndSetting = {
-    setting:Settings
-    posts:PostTrapi
+    setting:Settings;
+    posts:PostTrapi;
+    variables?:any;
 }
 
-export const loadPosts =  async (variables:LoadPostsVariables = {})=> {
+export const loadPosts =  async (variables:LoadPostsVariables = {}):Promise<any>=> {
+    let data = {}
     const defaultVariables:LoadPostsVariables ={
         sort:'createAd:desc',
         start:0,
-        limit:10
+        limit:1
     }
-
-    const data = await request(config.graphqlURL,GRAPHQL_QUERY,{
-        ...defaultVariables,
-        ...variables
-    })
-
+        data = await request(config.graphqlURL,GRAPHQL_QUERY,{
+            ...defaultVariables,
+            ...variables
+        })
     return data
 }

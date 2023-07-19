@@ -1,3 +1,4 @@
+import React from "react";
 import { ArticleHeaderProp, ArticleHeader } from '../ArticleHeader'
 import { HtmlContent } from '../htmlContent'
 import { PostContainer } from '../PostContainer'
@@ -14,7 +15,8 @@ export const Post = ({
     categories,
     author,
     createdAt,
-}:PostProps)=>{
+}:any)=>{
+ 
     return(
         <S.Wrapper>
         <ArticleHeader
@@ -25,7 +27,7 @@ export const Post = ({
         categories={categories}
         author={author}
         createdAt={createdAt}
-        />
+        /> 
         <PostContainer size='content'>
         <HtmlContent html={content}/>
         </PostContainer>

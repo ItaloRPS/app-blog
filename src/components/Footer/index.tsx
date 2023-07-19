@@ -1,3 +1,4 @@
+import React from 'react'
 import * as Styled from './style';
 import { HtmlContent } from '../htmlContent';
 

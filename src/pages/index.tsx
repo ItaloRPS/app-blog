@@ -1,14 +1,136 @@
 'use client'
 import React from 'react'
-import { loadPosts } from '../api/load-posts'
-import { useEffect } from 'react'
-export default function Home() {
-useEffect(()=>{
-  loadPosts()
-      .then((r)=> console.log(r))
-},[])
-
+import Head from 'next/head'
+import { loadPosts, StrapPostAndSetting } from '../api/load-posts'
+import {GetStaticProps} from 'next'
+import { PostsTemplate } from '@/templates/PostsTemplate'
+export default function Home({posts,setting}:any) {
   return (
-    <h1 className='teste'>teste</h1>
+   
+    <>
+    <Head>
+        <title>{setting.blogName}</title>
+        <meta name='description' content={setting.blogDescription}></meta>
+    </Head>
+    <PostsTemplate posts={posts} settings={setting}/>
+    </>
   )
+}
+
+export const getStaticProps = async () => {
+  var data = null;
+
+  try {
+    data = await loadPosts();
+  } catch (e) {
+    data = null;
+  }
+
+  if (!data || !data.posts|| !data.posts.data.length) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      setting: getDataSetting(data.setting.data),
+      posts: getDataPosts(data.posts.data),
+    },
+    revalidate:24*60*60
+  };
+};
+
+function getDataPosts(postData:Array<any>){
+  const posts = []
+  for (const post of postData) {
+    var {id,attributes:{slug,title,excerpt,content,createdAt,allowComments,cover,categories,tags,author}} = post
+    posts.push(
+      {
+        id,
+        slug,
+        title,
+        excerpt,
+        content,
+        createdAt,
+        allowComments,
+        cover:getDataCover(cover.data),
+        categories:getDataCategories(categories.data),
+        tags:getDataTags(tags.data),
+        author:getDataAuthor(author.data),
+      }
+    )
+  }
+  return posts
+}
+
+function getDataCover(coverData:Array<any>){
+  const covers =  coverData.map((cover)=>{
+    const {id,attributes:{alternativeText,url}} = cover
+    return {
+          id,
+          alternativeText,
+          url
+        }
+   }
+  )
+  return covers
+}
+
+function getDataCategories(categoriesData:Array<any>){
+  const categories =  categoriesData.map((categorie)=>{
+    const  {id,attributes:{displayName,slug}} = categorie
+    return {
+            id,
+            slug,
+            displayName,
+          }
+        }
+  )
+
+  return categories
+}
+
+function getDataTags(tagsData:Array<any>){
+  const tags =  tagsData.map((tag)=>{
+    const  {id,attributes:{displayName,slug}} = tag
+    return {
+            id,
+            slug,
+            displayName,
+          }
+        }
+  )
+
+    return tags
+}
+
+function getDataAuthor(author:any){
+  const  {id,attributes:{displayName,slug}} = author
+  return {
+    id,
+    displayName,
+    slug
+  }
+}
+
+function getDataSetting(setting:any){
+  const  {id,attributes:{blogName,blogDescription,logo,menuLink}} = setting
+  return  {
+    id,
+    blogName,
+    blogDescription,
+    logo:getDataLogo(logo.data),
+    menuLink,
+  }
+}
+
+function getDataLogo(logoData:any){
+  const  {id,attributes:{alternativeText,url}} = logoData
+
+    return {
+            id,
+            alternativeText,
+            url,
+          }
 }

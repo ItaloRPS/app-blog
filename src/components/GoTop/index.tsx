@@ -1,3 +1,4 @@
+import React from 'react'
 import p from 'prop-types'
 import * as S from './style'
 import {KeyboardArrowUp} from '@styled-icons/material-outlined/KeyboardArrowUp'

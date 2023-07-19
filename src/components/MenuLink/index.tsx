@@ -1,4 +1,4 @@
-import P from 'prop-types';
+import React from 'react'
 import * as S from './style';
 
 
